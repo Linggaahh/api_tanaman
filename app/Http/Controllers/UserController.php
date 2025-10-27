@@ -75,4 +75,29 @@ class UserController extends Controller
         $user->delete();
         return response()->json(['message' => 'User berhasil dihapus'], 200);
     }
+
+    public function login(Request $request)
+    {
+        $request->validate([
+            'username' => 'required',
+            'password' => 'required'
+        ]);
+
+        $user = UserModel::where('username', $request->username)->first();
+
+        if (!$user || !\Illuminate\Support\Facades\Hash::check($request->password, $user->password)) {
+            return response()->json(['message' => 'Username atau password salah'], 401);
+        }
+
+        return response()->json([
+            'message' => 'Login berhasil',
+            'data' => [
+                'id' => $user->id,
+                'nama' => $user->nama,
+                'username' => $user->username,
+                'gmail' => $user->gmail,
+                'role' => $user->role
+    ]
+], 200);
+    }
 }
