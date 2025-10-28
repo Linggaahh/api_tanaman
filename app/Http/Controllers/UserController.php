@@ -31,7 +31,8 @@ class UserController extends Controller
             'username' => 'required|unique:user,username',
             'password' => 'required',
             'gmail' => 'required|email|unique:user,gmail',
-            'role' => 'required'
+            'role' => 'required',
+            'profile_picture' => 'nullable|image|max:2048'
         ]);
 
         $user = UserModel::create([
@@ -39,7 +40,8 @@ class UserController extends Controller
             'username' => $request->username,
             'password' => bcrypt($request->password), 
             'gmail' => $request->gmail,
-            'role' => $request->role
+            'role' => $request->role,
+            'profile_picture' => $request->profile_picture ?? null
         ]);
 
         return response()->json(['message' => 'User berhasil ditambahkan', 'data' => $user], 201);
@@ -58,7 +60,8 @@ class UserController extends Controller
             'username' => $request->username ?? $user->username,
             'password' => $request->password ? bcrypt($request->password) : $user->password,
             'gmail' => $request->gmail ?? $user->gmail,
-            'role' => $request->role ?? $user->role
+            'role' => $request->role ?? $user->role,
+            'profile_picture' => $request->profile_picture ?? $user->profile_picture
         ]);
 
         return response()->json(['message' => 'User berhasil diupdate', 'data' => $user], 200);
@@ -96,7 +99,8 @@ class UserController extends Controller
                 'nama' => $user->nama,
                 'username' => $user->username,
                 'gmail' => $user->gmail,
-                'role' => $user->role
+                'role' => $user->role,
+                'profile_picture' => $user->profile_picture
     ]
 ], 200);
     }

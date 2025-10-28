@@ -14,6 +14,7 @@ class UserModel extends Model
         'username',
         'password',
         'gmail',
-        'role'
+        'role',
+        'profile_picture'
     ];
 }
