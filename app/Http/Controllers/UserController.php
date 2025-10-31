@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\UserModel;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 
 class UserController extends Controller
 {
@@ -79,29 +80,35 @@ class UserController extends Controller
         return response()->json(['message' => 'User berhasil dihapus'], 200);
     }
 
-    public function login(Request $request)
-    {
-        $request->validate([
-            'username' => 'required',
-            'password' => 'required'
-        ]);
+public function login(Request $request)
+{
+  
+    
+    $request->validate([
+        'gmail' => 'required',
+        'password' => 'required'
+    ]);
 
-        $user = UserModel::where('username', $request->username)->first();
+    $user = UserModel::where('gmail', $request->gmail)->first();
 
-        if (!$user || !\Illuminate\Support\Facades\Hash::check($request->password, $user->password)) {
-            return response()->json(['message' => 'Username atau password salah'], 401);
+        if (!$user || $request->password !== $user->password) {
+            return response()->json(['message' => 'gmail atau password salah'], 401);
         }
 
         return response()->json([
-            'message' => 'Login berhasil',
-            'data' => [
-                'id' => $user->id,
-                'nama' => $user->nama,
-                'username' => $user->username,
-                'gmail' => $user->gmail,
-                'role' => $user->role,
-                'profile_picture' => $user->profile_picture
-    ]
-], 200);
+        'message' => 'Login berhasil',
+        'data' => [
+            'id' => $user->id,
+            'nama' => $user->nama,
+            'username' => $user->username,
+            'gmail' => $user->gmail,
+            'role' => $user->role,
+            'profile_picture' => $user->profile_picture
+        ]
+    ], 200);
+}
+    public function logout(Request $request)
+    {
+        return response()->json(['message' => 'Logout berhasil'], 200);
     }
 }

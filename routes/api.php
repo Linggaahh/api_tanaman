@@ -9,11 +9,13 @@ use App\Http\Controllers\PanenController;
 use App\Http\Controllers\SupplyController;
 use App\Http\Controllers\SensorController;
 
-Route::get('/user', [UserController::class, 'index']);
+
 Route::get('/user/{id}', [UserController::class, 'show']);
 Route::post('/user', [UserController::class, 'store']);
 Route::put('/user/{id}', [UserController::class, 'update']);
 Route::delete('/user/{id}', [UserController::class, 'destroy']);
+Route::post('/login', [UserController::class, 'login']);
+Route::get('/logout', [UserController::class, 'logout']);
 
 Route::get('/tanaman', [TanamanController::class, 'index']);
 Route::get('/tanaman/{id}', [TanamanController::class, 'show']);
