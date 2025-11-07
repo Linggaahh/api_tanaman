@@ -9,7 +9,6 @@ use App\Http\Controllers\PanenController;
 use App\Http\Controllers\SupplyController;
 use App\Http\Controllers\SensorController;
 
-
 Route::get('/user/{id}', [UserController::class, 'show']);
 Route::get('/user', [UserController::class, 'index']);
 Route::post('/user', [UserController::class, 'store']);

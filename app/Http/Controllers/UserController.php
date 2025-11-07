@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\UserModel;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
@@ -82,8 +83,6 @@ class UserController extends Controller
 
 public function login(Request $request)
 {
-  
-    
     $request->validate([
         'gmail' => 'required',
         'password' => 'required'
@@ -91,7 +90,7 @@ public function login(Request $request)
 
     $user = UserModel::where('gmail', $request->gmail)->first();
 
-        if (!$user || $request->password !== $user->password) {
+        if (!$user || !Hash::check($request->password, $user->password)) {
             return response()->json(['message' => 'gmail atau password salah'], 401);
         }
 
