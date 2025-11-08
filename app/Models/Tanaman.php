@@ -12,6 +12,7 @@ class Tanaman extends Model
     protected $fillable = [
         'nm_tanaman',
         'varietas',
+        'jumlah',
         'tgl_tanam',
         'lama_panen',
         'lokasi',

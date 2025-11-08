@@ -27,8 +27,9 @@ class TanamanController extends Controller
         $request->validate([
             'nm_tanaman' => 'required|string|max:100',
             'varietas' => 'required|string|max:100',
+            'jumlah' => 'required|integer',
             'tgl_tanam' => 'required|date',
-            'lama_panen' => 'required|integer',
+            'lama_panen' => 'required|string',
             'lokasi' => 'required|string|max:150',
             'status' => 'required|string|max:50'
         ]);
@@ -36,6 +37,7 @@ class TanamanController extends Controller
         $tanaman = Tanaman::create([
             'nm_tanaman' => $request->nm_tanaman,
             'varietas' => $request->varietas,
+            'jumlah' => $request->jumlah,
             'tgl_tanam' => $request->tgl_tanam,
             'lama_panen' => $request->lama_panen,
             'lokasi' => $request->lokasi,
@@ -56,6 +58,7 @@ class TanamanController extends Controller
         $tanaman->update([
             'nm_tanaman' => $request->nm_tanaman ?? $tanaman->nm_tanaman,
             'varietas' => $request->varietas ?? $tanaman->varietas,
+            'jumlah' => $request->jumlah ?? $tanaman->jumlah,
             'tgl_tanam' => $request->tgl_tanam ?? $tanaman->tgl_tanam,
             'lama_panen' => $request->lama_panen ?? $tanaman->lama_panen,
             'lokasi' => $request->lokasi ?? $tanaman->lokasi,
