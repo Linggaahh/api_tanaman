@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Panen;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 
 class PanenController extends Controller
 {
@@ -23,6 +24,8 @@ class PanenController extends Controller
 
     public function store(Request $request)
     {
+        Log::info('Request panen: ', $request->all());
+
         $request->validate([
             'tgl_panen' => 'required|date',
             'jenis_panen' => 'required|string|max:100',
