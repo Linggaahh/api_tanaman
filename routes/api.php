@@ -8,11 +8,12 @@ use App\Http\Controllers\PakanController;
 use App\Http\Controllers\PanenController;
 use App\Http\Controllers\SupplyController;
 use App\Http\Controllers\SensorController;
+use App\Http\Controllers\PengirimanController;
 
 Route::get('/user/{id}', [UserController::class, 'show']);
 Route::get('/user', [UserController::class, 'index']);
 Route::post('/user', [UserController::class, 'store']);
-Route::put('/user/{id}', [UserController::class, 'update']);
+Route::post('/user/{id}', [UserController::class, 'update']);
 Route::delete('/user/{id}', [UserController::class, 'destroy']);
 Route::post('/login', [UserController::class, 'login']);
 Route::get('/logout', [UserController::class, 'logout']);
@@ -52,6 +53,12 @@ Route::get('/sensor/{id}', [SensorController::class, 'show']);
 Route::post('/sensor', [SensorController::class, 'store']);
 Route::put('/sensor/{id}', [SensorController::class, 'update']);
 Route::delete('/sensor/{id}', [SensorController::class, 'destroy']);
+
+Route::get('/pengiriman', [PengirimanController::class, 'index']);
+Route::get('/pengiriman/{id}', [PengirimanController::class, 'show']);
+Route::post('/pengiriman', [PengirimanController::class, 'store']);
+Route::put('/pengiriman/{id}', [PengirimanController::class, 'update']);
+Route::delete('/pengiriman/{id}', [PengirimanController::class, 'destroy']);
 
 Route::get('/test', function () {
     return response()->json(['message' => 'API Berhasil Terhubung!']);

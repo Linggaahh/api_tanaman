@@ -26,12 +26,14 @@ class PakanController extends Controller
         $request->validate([
             'nm_pakan' => 'required|string|max:100',
             'jumlah_stok' => 'required|integer',
+            'stok_maksimal' => 'integer',
             'tgl_beli' => 'required|date'
         ]);
 
         $pakan = Pakan::create([
             'nm_pakan' => $request->nm_pakan,
             'jumlah_stok' => $request->jumlah_stok,
+            'stok_maksimal' => $request->stok_maksimal,
             'tgl_beli' => $request->tgl_beli
         ]);
 
@@ -48,6 +50,7 @@ class PakanController extends Controller
         $pakan->update([
             'nm_pakan' => $request->nm_pakan ?? $pakan->nm_pakan,
             'jumlah_stok' => $request->jumlah_stok ?? $pakan->jumlah_stok,
+            'stok_maksimal' => $request->stok_maksimal ?? $pakan->stok_maksimal,
             'tgl_beli' => $request->tgl_beli ?? $pakan->tgl_beli,
         ]);
 

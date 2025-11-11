@@ -13,6 +13,7 @@ class Pakan extends Model
     protected $fillable = [
         'nm_pakan',
         'jumlah_stok',
+        'stok_maksimal',
         'tgl_beli'
     ];
 }
