@@ -13,11 +13,12 @@ class Sensor extends Model
     protected $fillable = [
         'id_tanaman',
         'id_kandang',
-        'lokal',
+        'lokasi',
+        'populasi',
+        'suhu',
         'kelembapan',
         'produktivitas',
-        'eto_kesehatan',
-        'populasi',
+        'status_kesehatan',
         'waktu'
     ];
 
