@@ -7,12 +7,16 @@ use Illuminate\Http\Request;
 
 class SensorController extends Controller
 {
-    // Tampilkan semua data sensor
     public function index()
     {
         $sensor = Sensor::with(['tanaman', 'kandang'])->get();
-        return response()->json($sensor, 200);
+
+        return response()->json([
+            'success' => true,
+            'data' => $sensor
+        ], 200);
     }
+
 
     // Tampilkan data sensor berdasarkan ID
     public function show($id)
