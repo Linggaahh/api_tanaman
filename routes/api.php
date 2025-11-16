@@ -63,3 +63,5 @@ Route::delete('/pengiriman/{id}', [PengirimanController::class, 'destroy']);
 Route::get('/test', function () {
     return response()->json(['message' => 'API Berhasil Terhubung!']);
 });
+
+Route::post('/tanaman/{id}/panen', [TanamanController::class, 'panen']);

@@ -16,6 +16,7 @@ class Tanaman extends Model
         'tgl_tanam',
         'lama_panen',
         'lokasi',
-        'status'
+        'status',
+        'Foto'
     ];
 }
