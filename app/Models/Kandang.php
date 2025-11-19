@@ -15,6 +15,9 @@ class Kandang extends Model
         'kapasitas',
         'jumlah_hewan',
         'jenis_hewan',
+        'Hasil_Produksi',
+        "Jml_produksi",
+        "foto_hasil",
         'keterangan'
     ];
 
