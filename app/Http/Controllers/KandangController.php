@@ -30,7 +30,6 @@ class KandangController extends Controller
             'jenis_hewan' => 'required|string|max:100',
             'Hasil_Produksi' => 'required|string|max:255',
             'Jml_produksi' => 'nullable|integer',
-            'foto_hasil' => 'nullable|image|max:2048',
             'keterangan' => 'required|string|max:255'
         ]);
 
@@ -41,7 +40,6 @@ class KandangController extends Controller
             'jenis_hewan' => $request->jenis_hewan,
             'Hasil_Produksi' => $request->Hasil_Produksi,
             'Jml_produksi' => $request->Jml_produksi,
-            'foto_hasil' => $request->foto_hasil,
             'keterangan' => $request->keterangan
         ]);
 
@@ -62,7 +60,6 @@ class KandangController extends Controller
             'jenis_hewan' => $request->jenis_hewan ?? $kandang->jenis_hewan,
             'Hasil_Produksi' => $request->Hasil_Produksi ?? $kandang->Hasil_Produksi,
             'Jml_produksi' => $request->Jml_produksi ?? $kandang->Jml_produksi,
-            'foto_hasil' => $request->foto_hasil ?? $kandang->foto_hasil,
             'keterangan' => $request->keterangan ?? $kandang->keterangan,
         ]);
 
