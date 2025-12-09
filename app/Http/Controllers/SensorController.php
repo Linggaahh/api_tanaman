@@ -7,15 +7,15 @@ use Illuminate\Http\Request;
 
 class SensorController extends Controller
 {
+    
     public function index()
     {
         $sensor = Sensor::with(['tanaman', 'kandang'])->get();
 
-        return response()->json([
-            'success' => true,
-            'data' => $sensor
-        ], 200);
+        // ✅ Return langsung array tanpa wrapper
+        return response()->json($sensor, 200);
     }
+    
 
 
     // Tampilkan data sensor berdasarkan ID

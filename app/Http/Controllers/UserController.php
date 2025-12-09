@@ -10,11 +10,11 @@ use Illuminate\Support\Facades\Storage;
 
 class UserController extends Controller
 {
-
     public function index()
     {
         return response()->json(UserModel::all(), 200);
     }
+
     public function show($id)
     {
         $user = UserModel::find($id);
@@ -23,7 +23,6 @@ class UserController extends Controller
         }
         return response()->json($user, 200);
     }
-
 
     public function store(Request $request)
     {
@@ -47,7 +46,6 @@ class UserController extends Controller
 
         return response()->json(['message' => 'User berhasil ditambahkan', 'data' => $user], 201);
     }
-
 
     public function update(Request $request, $id)
     {
@@ -92,7 +90,7 @@ class UserController extends Controller
     public function uploadProfilePicture(Request $request)
     {
         $request->validate([
-            'id_user' => 'required|exists:user,id',
+            'id_user' => 'required|exists:user,id_user', // <-- GANTI KE id_user
             'profile_picture' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048'
         ]);
 
@@ -113,7 +111,7 @@ class UserController extends Controller
 
             // Upload foto baru
             $file = $request->file('profile_picture');
-            $fileName = 'profile_' . $user->id . '_' . time() . '.' . $file->getClientOriginalExtension();
+            $fileName = 'profile_' . $user->id_user . '_' . time() . '.' . $file->getClientOriginalExtension(); // <-- id_user
             $path = $file->storeAs('profile_pictures', $fileName, 'public');
 
             // Update database
@@ -166,7 +164,8 @@ class UserController extends Controller
         return response()->json([
             'message' => 'Login berhasil',
             'data' => [
-                'id' => $user->id,
+                'id_user' => $user->id_user, // <-- GANTI INI
+                'id' => $user->id_user,      // <-- TAMBAH INI JIKA FRONTEND PERLU 'id'
                 'nama' => $user->nama,
                 'username' => $user->username,
                 'gmail' => $user->gmail,
@@ -175,6 +174,7 @@ class UserController extends Controller
             ]
         ], 200);
     }
+
     public function logout(Request $request)
     {
         return response()->json(['message' => 'Logout berhasil'], 200);

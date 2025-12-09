@@ -28,14 +28,14 @@ Route::put('/tanaman/{id}', [TanamanController::class, 'update']);
 Route::delete('/tanaman/{id}', [TanamanController::class, 'destroy']);
 Route::post('/tanaman/{id}/panen', [TanamanController::class, 'panen']);
 
-// Kandang Routes
 Route::get('/kandang', [KandangController::class, 'index']);
 Route::get('/kandang/{id}', [KandangController::class, 'show']);
 Route::post('/kandang', [KandangController::class, 'store']);
 Route::put('/kandang/{id}', [KandangController::class, 'update']);
 Route::delete('/kandang/{id}', [KandangController::class, 'destroy']);
 
-// Pakan Routes
+Route::post('/kandang/{id}/panen', [KandangController::class, 'panen']);
+
 Route::get('/pakan', [PakanController::class, 'index']);
 Route::get('/pakan/{id}', [PakanController::class, 'show']);
 Route::post('/pakan', [PakanController::class, 'store']);

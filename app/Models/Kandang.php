@@ -17,7 +17,9 @@ class Kandang extends Model
         'jenis_hewan',
         'Hasil_Produksi',
         "Jml_produksi",
-        'keterangan'
+        'keterangan',
+        'tgl_produksi',
+        'lama_produksi'
     ];
 
 }
