@@ -36,13 +36,20 @@ class Pengiriman extends Model
     }
 
 
+    // Relasi
     public function supply()
     {
-        return $this->belongsTo(Supply::class, 'id_supply');
+        return $this->belongsTo(Supply::class, 'id_supply', 'id_supply');
+    }
+
+    public function panen()
+    {
+        return $this->belongsTo(Panen::class, 'id_panen', 'id_panen');
     }
 
     public function kurir()
     {
-        return $this->belongsTo(UserModel::class, 'id_kurir');
+        return $this->belongsTo(User::class, 'id_kurir', 'id_user');
     }
+
 }

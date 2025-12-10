@@ -30,13 +30,13 @@ class PengirimanController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'id_supply' => 'required|integer',
-            'id_panen' => 'required|integer',
+            'id_supply' => 'nullable|integer',
+            'id_panen' => 'nullable|integer',
             'tgl_pengiriman' => 'required|date',
             'tujuan' => 'required|string|max:255',
             'jumlah_dikirim' => 'required|integer|min:1',
             'status_pengiriman' => 'required|in:pending,selesai',
-            'id_kurir' => 'required|integer',
+            'id_kurir' => 'nullable|integer',
             'keterangan' => 'nullable|string'
         ]);
 
@@ -58,12 +58,12 @@ class PengirimanController extends Controller
 
         $request->validate([
             'id_supply' => 'nullable|integer',
-            'id_panen' => 'sometimes|integer',
-            'tgl_pengiriman' => 'sometimes|date',
-            'tujuan' => 'sometimes|string|max:255',
-            'jumlah_dikirim' => 'sometimes|integer|min:1',
-            'status_pengiriman' => 'sometimes|in:pending,selesai',
-            'id_kurir' => 'sometimes|integer',
+            'id_panen' => 'nullable|integer',
+            'tgl_pengiriman' => 'nullable|date',
+            'tujuan' => 'nullable|string|max:255',
+            'jumlah_dikirim' => 'nullable|integer|min:1',
+            'status_pengiriman' => 'nullable|in:pending,selesai',
+            'id_kurir' => 'nullable|integer',
             'keterangan' => 'nullable|string'
         ]);
 
